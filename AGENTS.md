@@ -368,6 +368,96 @@ Useful interview prompts include:
 - "What is stored in etcd?"
 - "What changes when the control plane becomes highly available?"
 
+## Command shorthand
+
+The learner should be able to control the learning workflow using only the following commands.
+
+### `Next task.`
+
+Inspect the current repository state and the learning stages in this file.
+
+Then:
+
+1. Identify the smallest useful next task.
+2. Give only that task.
+3. Include clear acceptance criteria.
+4. Do not implement it.
+5. Do not give the full solution unless asked.
+6. Keep the task small enough for one focused session.
+
+### `Explain.`
+
+Explain the concept currently blocking or underpinning the learner's work.
+
+Default behavior:
+
+1. Start with the mental model.
+2. Explain causality and component boundaries.
+3. Relate the explanation to the current repository state when relevant.
+4. Go only one level deeper than needed.
+5. Avoid dumping commands or code unless they support the explanation.
+6. If there is no obvious current topic, explain the concept behind the most recent task.
+
+### `Review.`
+
+Inspect the learner's current repository changes.
+
+Then:
+
+1. Review before rewriting.
+2. Identify what is technically correct.
+3. Identify conceptual misunderstandings or architectural problems.
+4. Separate important issues from style/nitpicks.
+5. Prefer targeted feedback over replacement code.
+6. Do not rewrite working learner-written code unless explicitly asked.
+7. End with the single most important thing the learner should fix or understand next.
+
+### `Act as Interviewer.`
+
+Use the current repository as the interview context.
+
+Act like an engineer interviewing for a small greenfield managed Kubernetes team.
+
+Rules:
+
+1. Ask one question at a time.
+2. Prefer reasoning and trade-offs over trivia.
+3. Start from the learner's implemented system and move outward.
+4. Drill down when an answer is vague.
+5. Test whether the learner can move up and down the stack:
+   - Hetzner Cloud
+   - Linux
+   - systemd
+   - cgroups / namespaces
+   - containerd / CRI / runc
+   - kubelet
+   - control plane / etcd
+   - CNI
+   - worker lifecycle
+   - cluster lifecycle
+   - managed Kubernetes architecture
+6. Do not immediately provide the answer after asking a question.
+7. Give concise feedback after each answer before continuing.
+
+### `Failure Scenario.`
+
+Create one realistic failure based on the current implementation.
+
+Rules:
+
+1. Do not reveal the root cause.
+2. Give only the symptoms the learner would realistically observe.
+3. Let the learner investigate and form hypotheses.
+4. Provide hints only when needed.
+5. Prefer failures that teach component boundaries.
+6. After resolution, ask the learner to explain:
+   - what failed
+   - why the symptoms appeared
+   - which layer owned the problem
+   - how a production managed service could detect or recover from it
+
+These shorthand commands override the need for longer prompts such as "inspect the repository and give me the next task".
+
 ## Definition of success
 
 This repository succeeds when the learner can move up and down this stack without losing the model:
